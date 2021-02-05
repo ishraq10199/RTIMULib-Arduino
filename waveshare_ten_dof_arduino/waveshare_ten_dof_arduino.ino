@@ -51,8 +51,8 @@ void setup()
   Wire.begin();
   imu = RTIMU::createIMU(&settings); // create the imu object
 
-  Serial.print("ArduinoIMU starting using device ");
-  Serial.println(imu->IMUName());
+//  Serial.print("ArduinoIMU starting using device ");
+//  Serial.println(imu->IMUName());
   if ((errcode = imu->IMUInit()) < 0)
   {
     Serial.print("Failed to init IMU: ");
@@ -60,9 +60,11 @@ void setup()
   }
 
   if (imu->getCalibrationValid())
-    Serial.println("Using compass calibration");
+//    Serial.println("Using compass calibration");
+    delay(1);
   else
-    Serial.println("No valid compass calibration data");
+//    Serial.println("No valid compass calibration data");
+    delay(1);
 
   lastDisplay = lastRate = millis();
   sampleCount = 0;
@@ -133,37 +135,37 @@ void loop()
 
       // Quaternion -- imu_msg.orientation
       value = fusion.getFusionQPose().x();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
 
       value = fusion.getFusionQPose().y();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
 
       value = fusion.getFusionQPose().z();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
 
       
       value = fusion.getFusionQPose().scalar();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
 
       // Gyro data -- imu_msgs.angular_velocity
       value = gyroData.x();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
       value = gyroData.y();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
       value = gyroData.z();
-      if(value == -0.00) value = 0.00;
+
       Serial.print(value);
       Serial.print("\t");
 
@@ -172,30 +174,30 @@ void loop()
       if (RAW_LINEAR_ACCELERATION)
       {
         value = rawAccel.x();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value * G_TO_MPSS);
         Serial.print("\t");
         value = rawAccel.y();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value * G_TO_MPSS);
         Serial.print("\t");
         value = rawAccel.z();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value * G_TO_MPSS);
         Serial.print("\t");
       }
       else
       {
         value = realAccel.x();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value);
         Serial.print("\t");
         value = realAccel.y();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value);
         Serial.print("\t");
         value = realAccel.z();
-        if(value == -0.00) value = 0.00;
+
         Serial.print(value);
         Serial.print("\t");
       }
