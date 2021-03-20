@@ -29,9 +29,9 @@
 
 //  IMU enable defs - only one should be enabled, the rest commented out
 
-#define MPU9150_68                      // MPU9150 at address 0x68
+//#define MPU9150_68                      // MPU9150 at address 0x68
 //#define MPU9150_69                      // MPU9150 at address 0x69
-//#define MPU9250_68                      // MPU9250 at address 0x68
+#define MPU9250_68                      // MPU9250 at address 0x68
 //#define MPU9250_69                      // MPU9250 at address 0x69
 //#define LSM9DS0_6a                      // LSM9DS0 at address 0x6a
 //#define LSM9DS0_6b                      // LSM9DS0 at address 0x6b
